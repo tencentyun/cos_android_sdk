@@ -10,4 +10,4 @@ cos_android_sdk
 
 更多示例可参考Demo
 
-2017年2月22日16 == 更新版本为： cos-android-sdk1.4.3.jar
+2017年2月22日22 == 更新版本为： cos-android-sdk1.4.3.jar
