@@ -16,15 +16,17 @@ cos_android_sdk
 
 在build.gradle中，添加如下依赖:
 
+```
 dependencies {
     compile 'com.tencent.cos:cos:4.3.2+@aar'
     
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
 }
-   
+``` 
 
 # 注意： 
 
+```
 目录创建操作：
 CreateDirResult createDir(CreateDirRequest createDirRequest); //同步方法
 
@@ -81,3 +83,4 @@ Copy操作：
 CopyObjectResult copyObject(CopyObjectRequest copyObjectRequest); //同步方法
 
 void copyObjectAsyn(CopyObjectRequest copyObjectRequest);  // 异步方法
+```
