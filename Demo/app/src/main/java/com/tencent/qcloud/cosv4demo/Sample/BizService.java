@@ -56,10 +56,10 @@ public class BizService {
         synchronized (this){
             if(cosClient == null){
                 config = new COSConfig();
-                region = "gz";
+                region = "园区";
                 config.setEndPoint(region);
-                appid = "1253960454";
-                bucket = "xy2";
+                appid = "appid";
+                bucket = "bucket";
                 cosClient = new COSClient(context,appid,config,"xxxx");
             }
         }
