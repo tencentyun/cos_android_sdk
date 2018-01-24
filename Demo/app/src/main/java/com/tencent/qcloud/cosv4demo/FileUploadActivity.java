@@ -55,6 +55,7 @@ public class FileUploadActivity extends AppCompatActivity implements View.OnClic
             case R.id.upload:
                upload();
                 //updateMeta();
+                //upload2();
                 break;
         }
     }

@@ -56,10 +56,10 @@ public class BizService {
         synchronized (this){
             if(cosClient == null){
                 config = new COSConfig();
-                region = "园区";
+                region = "sh";
                 config.setEndPoint(region);
-                appid = "appid";
-                bucket = "bucket";
+                appid = "1253960454";
+                bucket = "xy3";
                 cosClient = new COSClient(context,appid,config,"xxxx");
             }
         }
@@ -72,14 +72,14 @@ public class BizService {
      * @return
      */
     public String getLocalSign(){
-        String secretId = "XXX";
-        String secretKey = "XXX";
+        String secretId = "***REMOVED***";
+        String secretKey = "***REMOVED***";
         LocalCredentialProvider localCredentialProvider = new LocalCredentialProvider(secretKey);
         return localCredentialProvider.getSign(appid, bucket, secretId, null, 60 * 60);
     }
     public String getLocalOnceSign(String fileId){
-        String secretId = "XXX";
-        String secretKey = "XXX";
+        String secretId = "***REMOVED***";
+        String secretKey = "***REMOVED***";
         LocalCredentialProvider localCredentialProvider = new LocalCredentialProvider(secretKey);
         return localCredentialProvider.getSign(appid, bucket, secretId, fileId, 60 * 60);
     }
@@ -92,30 +92,61 @@ public class BizService {
      *
      * @return 返回多次签名串
      */
-    public  String getSign(){
-        String sign = null;
-        String cgi = "http://203.195.194.28/cosv4/getsignv4.php?" + "bucket=" + bucket + "&service=video";
-        try {
-            URL url = new URL(cgi);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            InputStream in = conn.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
-            String line = bufferedReader.readLine();
-            if(line == null)return  null;
-            JSONObject json = new JSONObject(line);
-            if(json.has("sign")){
-                sign = json.getString("sign");
-            }
-            Log.w("XIAO","sign=" +sign);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return sign;
+//    public  String getSign(){
+//        String sign = null;
+//        String cgi = "http://203.195.194.28/cosv4/getsignv4.php?" + "bucket=" + bucket + "&service=video";
+//        try {
+//            URL url = new URL(cgi);
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//            InputStream in = conn.getInputStream();
+//            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
+//            String line = bufferedReader.readLine();
+//            if(line == null)return  null;
+//            JSONObject json = new JSONObject(line);
+//            if(json.has("sign")){
+//                sign = json.getString("sign");
+//            }
+//            Log.w("XIAO","sign=" +sign);
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        return sign;
+//    }
+
+    public String getSign(){
+        return getLocalSign();
+//        String sign = null;
+//        String urlStr = "http://119.29.185.98:8080/COSSignServer/cos/V4Sign?appid=1253960454&bucket=androidtest&e=300";
+//
+//        try {
+//            URL url  = new URL(urlStr);
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//            InputStream in = conn.getInputStream();
+//            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(in));
+//            StringBuilder stringBuilder = new StringBuilder();
+//            String line = null;
+//            while((line = bufferedReader.readLine())!= null){
+//                stringBuilder.append(line);
+//            }
+//            JSONObject json = new JSONObject(stringBuilder.toString());
+//            if(json.has("sign")) {
+//                sign = json.getString("sign");
+//            }
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        return sign;
     }
+
+
 
     /**
      *

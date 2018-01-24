@@ -26,15 +26,18 @@ public class PutObjectSample {
         putObjectRequest.setBucket(bizService.bucket);
         /** 设置cosPath :远程路径*/
         putObjectRequest.setCosPath(cosPath);
+        String key = "Pic-Operations";
+        String value = "{\"rules\":[{\"fileid\":\"tpg_test.tpg\",\"rule\":\"imageView2/format/tpg\"}]}";
+        putObjectRequest.setCustomerHeaders(key, value);
         /** 设置srcPath: 本地文件的路径 */
         putObjectRequest.setSrcPath(localPath);
         /** 设置 insertOnly: 是否上传覆盖同名文件*/
         putObjectRequest.setInsertOnly("1");
         /** 设置sign: 签名，此处使用多次签名 */
-        putObjectRequest.setSign(bizService.getLocalSign());
+        putObjectRequest.setSign(bizService.getSign());
 
         /** 设置sha: 是否上传文件时带上sha，一般不需要带*/
-        //putObjectRequest.setSha(putObjectRequest.getsha());
+        //putObjectRequest.setSha("hhhehhdehx");
 
         /** 设置listener: 结果回调 */
         putObjectRequest.setListener(new IUploadTaskListener() {
@@ -58,13 +61,15 @@ public class PutObjectSample {
                 stringBuilder.append(" access_url= " + putObjectResult.access_url == null ? "null" :putObjectResult.access_url + "\n");
                 stringBuilder.append(" resource_path= " + putObjectResult.resource_path == null ? "null" :putObjectResult.resource_path + "\n");
                 stringBuilder.append(" url= " + putObjectResult.url == null ? "null" :putObjectResult.url);
+                stringBuilder.append("image_info =" + putObjectResult.imageInfo);
                 String result = stringBuilder.toString();
                 Log.w("XIAO",result);
             }
 
             @Override
             public void onFailed(COSRequest cosRequest, COSResult cosResult) {
-                String result = "上传出错： ret =" +cosResult.code + "; msg =" + cosResult.msg;
+                String result = "上传出错： ret =" +cosResult.code + "; msg =" + cosResult.msg
+                        + "; requestId =" + cosResult.requestId;
                 Log.w("XIAO",result);
             }
         });
