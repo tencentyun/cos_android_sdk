@@ -26,6 +26,8 @@ dependencies {
 
 # 注意： 
 
+# 请求返回的两个字段：access_url 和 source_url,其中source_url是默认的下载地址，且已经过URLEncode; access_url是cdn加速下载地址，未经过URLEncode.
+
 目录创建操作：
 
 ```
