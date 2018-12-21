@@ -1,5 +1,8 @@
 # cos_android_sdk 导入的第一种方式：
-cos_android_sdk
+
+
+## 已弃用 - 请升级到 cos xml sdk
+SDK 依赖的 JSON API 已弃用，请直接使用基于 XML API 的 [cos-xml-sdk](https://github.com/tencentyun/qcloud-sdk-android)，或者参照 [指引](https://cloud.tencent.com/document/product/436/30776) 升级到新版SDK。
 
 配置工程导入下列 jar 包：
 
