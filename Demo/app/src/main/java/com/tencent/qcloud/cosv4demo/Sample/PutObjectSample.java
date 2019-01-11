@@ -31,8 +31,6 @@ public class PutObjectSample {
         putObjectRequest.setCustomerHeaders(key, value);
         /** 设置srcPath: 本地文件的路径 */
         putObjectRequest.setSrcPath(localPath);
-        /** 设置 insertOnly: 是否上传覆盖同名文件*/
-        putObjectRequest.setInsertOnly("1");
         /** 设置sign: 签名，此处使用多次签名 */
         putObjectRequest.setSign(bizService.getSign());
 
